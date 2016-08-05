@@ -165,3 +165,4 @@ int main(){
 	printf("average of cycling time with weight:%.2f\n",average/pronum);
 	return 0;
 }
+
