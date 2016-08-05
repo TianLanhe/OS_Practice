@@ -9,6 +9,7 @@
 #define FALSE 0
 #define Addr int 				//地址返回值
 #define min_size 9 				//最小的分区长度单位
+#define ADDSIZE 640				//默认的内存大小
 typedef struct free_memory{
 	struct free_memory *pre;	//指向前一节点(分区)的指针
 	int size;					//节点(分区)的长度
@@ -38,9 +39,9 @@ void PrintLink(FM_Link link);
 Status InsertFM(FM_Link *link,FM *p1,FM *p2);
 //p1是分区链link中的节点，将p2节点插入p1节点之后
 Status DelectFM(FM_Link *link,FM *p);
-//将p节点从分区链link中删除
+//将p节点从分区链link中摘除，但并没有释放p的空间
 FM *LocateFM(FM_Link link,int request_size);
-//在link中,从第posi个位置开始，搜索大小超过request_size的空闲分区
+//在link中，搜索第一个大小超过request_size的空闲分区并返回分区的地址，若没有找到，则返回NULL
 Addr Alloc_FF(int request_size);
 //首次适应分配算法
 Status Free_FF(Addr addr_start);
@@ -62,16 +63,17 @@ void PrintMenu();
 void PrintMenu_sub();
 //打印子菜单
 void RequestTest(Addr (*myalloc)(int),Status (*myfree)(Addr),int size);
+//按书上要求的默认数据进行测试
 void RandomTest(Addr (*myalloc)(int),Status (*myfree)(Addr),int size);
 //指定内存动态分配算法，进行随机测试
 void MemoryDynamic(Addr (*myalloc)(int),Status (*myfree)(Addr),int size);
-//动态分配算法，若size为0，则创建的内存大小为默认的1M(640 KB)
+//动态分配算法，若size为0，则创建的内存大小为默认的ADDSIZEKB
 Status InitFMLink(FM_Link *link,int mem_size){
 	FM *node;
 	if(mem_size<=0)return ERROR;
-	link->head=(FM *)malloc(sizeof(FM));
+	link->head=(FM *)malloc(sizeof(FM));		//分配虚头结点
 	if(!link->head)return ERROR;
-	link->head->pre=link->head;
+	link->head->pre=link->head;					//进行处理
 	link->head->size=link->head->addr_start=link->head->state=-1;
 	node=link->head->next=(FM *)malloc(sizeof(FM));
 	if(!node)return ERROR;
@@ -359,7 +361,7 @@ void RequestTest(Addr (*myalloc)(int),Status (*myfree)(Addr),int allsize){
 	int addr[8];
 	int size;
 	DestroyLink(&fmlink);
-	InitFMLink(&fmlink,640);
+	InitFMLink(&fmlink,ADDSIZE);
 	printf("作业 1 申请 130 KB\n");
 	addr[1]=myalloc(130);
 	PrintLink(fmlink);
@@ -464,7 +466,7 @@ void MemoryDynamic(Addr (*myalloc)(int),Status (*myfree)(Addr),int allsize){
 	int choice;
 	int addr;
 	int size;
-	if(allsize <= 0)allsize=640;
+	if(allsize <= 0)allsize=ADDSIZE;
 	InitFMLink(&fmlink,allsize);
 	if(myalloc == Alloc_NF)start_add=0;
 	while(1){
