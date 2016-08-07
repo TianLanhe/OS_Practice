@@ -19,9 +19,11 @@
 开启客户端，通过消息队列向服务器发送消息(此客户端pid为3249)
 
 ![](screenshot/screenshot7.jpg)
+
 输入内容"this is the client"将此消息发送给服务器，提示成功发送并从pid为3247的服务器得到响应(如果同时开着多个server则情况会有所不同)
 
 ![](screenshot/screenshot8.jpg)
+
 输出从client中得到的pid与内容content.
 
 ###A4
@@ -37,3 +39,5 @@
 ![](screenshot/screenshot4.jpg)
 
 测试操作：首次适应算法的默认数据测试
+
+##[返回顶部](#操作系统原理实验)
