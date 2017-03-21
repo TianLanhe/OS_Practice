@@ -10,21 +10,22 @@
 效果展示：
 --------
 ### Client & Server
-![](screenshot/screenshot5.jpg)
 
 开启服务器，等待客户端请求连接(此服务器pid为3247)
 
-![](screenshot/screenshot6.jpg)
+![](screenshot/screenshot5.jpg)
 
 开启客户端，通过消息队列向服务器发送消息(此客户端pid为3249)
 
-![](screenshot/screenshot7.jpg)
+![](screenshot/screenshot6.jpg)
 
 输入内容"this is the client"将此消息发送给服务器，提示成功发送并从pid为3247的服务器得到响应(如果同时开着多个server则情况会有所不同)
 
-![](screenshot/screenshot8.jpg)
+![](screenshot/screenshot7.jpg)
 
 输出从client中得到的pid与内容content.
+
+![](screenshot/screenshot8.jpg)
 
 ### A4
 ![](screenshot/screenshot.jpg)
@@ -36,8 +37,8 @@
 ### A5
 ![](screenshot/screenshot3.jpg)
 
-![](screenshot/screenshot4.jpg)
-
 测试操作：首次适应算法的默认数据测试
+
+![](screenshot/screenshot4.jpg)
 
 ## [返回顶部](#操作系统原理实验)
