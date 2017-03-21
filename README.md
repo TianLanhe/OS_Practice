@@ -9,7 +9,7 @@
 
 效果展示：
 --------
-###Client & Server
+### Client & Server
 ![](screenshot/screenshot5.jpg)
 
 开启服务器，等待客户端请求连接(此服务器pid为3247)
@@ -26,18 +26,18 @@
 
 输出从client中得到的pid与内容content.
 
-###A4
+### A4
 ![](screenshot/screenshot.jpg)
 
 ![](screenshot/screenshot1.jpg)
 
 ![](screenshot/screenshot2.jpg)
 
-###A5
+### A5
 ![](screenshot/screenshot3.jpg)
 
 ![](screenshot/screenshot4.jpg)
 
 测试操作：首次适应算法的默认数据测试
 
-##[返回顶部](#操作系统原理实验)
+## [返回顶部](#操作系统原理实验)
